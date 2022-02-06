@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+//style from our component
+import styled from "styled-components";
+//import components
+import Elephant from "./components/Elephant";
+import Giraffe from "./components/Giraffe";
+import Monkey from "./components/Monkey";
+import Time from "./components/Time";
 
 function App() {
+  const refresh = () => {
+    window.location.reload()
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Style className="App">
+      <Time />
+      <div className={"animals"}>
+        <Giraffe />
+        <Elephant />
+        <Monkey />
+      </div>
+      <button onClick={refresh}>Restart</button>
+    </Style>
   );
 }
+
+//Styling
+const Style = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+  .animals {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 80vh;
+    .buttons {
+      height: 10vh;
+      text-align: center;
+      button {
+        margin: 10px;
+      }
+    }
+  }
+  p {
+    text-align: center;
+  }
+`;
 
 export default App;
